@@ -1,0 +1,25 @@
+
+== Data Asal 
+
+Basis data dengan _schema_ PBB pada sistem basis data Oracle.
+
+== Kegiatan Manipulasi Yang Dilakukan
+
+Melakukan pengambilan data piutang Kelurahan Brebes Kecamatan Brebes Tahun Pajak 2011 yang kemudian dicocokan dengan data pembayaran di Bank Jateng, hasilnya kemudian dicatatkan dalam basis data SISMIOP dengan ketetapan piutang yang jelas untuk tiap objek pajaknya.
+
+== Hasil Manipulasi
+
+Hasil manipulasi data dapat diakses pada alamat https://docs.google.com/spreadsheets/d/1z90wkO-NJaNizEXOH5_lQmlLiQQzvsNrzYFbgy2lPk4/edit?usp=sharing
+
+== _Script_ atau _command_ yang Digunakan Untuk Melakukan Manipulasi
+
+----
+select kd_propinsi, kd_dati2, kd_kecamatan, kd_kelurahan, kd_blok, no_urut, kd_jns_op, thn_pajak_sppt, 
+  pbb_yg_harus_dibayar_sppt, status_pembayaran_sppt
+from sppt
+where kd_kecamatan='160'
+  and kd_kelurahan='009'
+  and thn_pajak_sppt='2011'
+  and status_pembayaran_sppt in ('0','1','2')
+order by kd_blok, no_urut, kd_jns_op
+----
